@@ -1,119 +1,87 @@
-import React, { useState, useRef } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  Keyboard,
-  TextInput as TextInputType,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
+// Define the type for the component (no props in this case)
 const LoginScreen: React.FC = () => {
-  const [mpin, setMpin] = useState<string>("");
-  const inputRef = useRef<TextInputType>(null);
-
-  const handleDotPress = () => {
-    inputRef.current?.focus();
-  };
-
-  const handleChange = (text: string) => {
-    // Allow only numeric values and limit to 4 digits
-    const newText = text.replace(/[^0-9]/g, "").slice(0, 4);
-    setMpin(newText);
-  };
-
   return (
     <View style={styles.container}>
-      {/* Top section with logo and welcome text */}
-      <View style={styles.topSection}>
-        <Image
-          source={require("../../assets/bank-logo.png")}
-          style={styles.logo}
-        />
-        <Text style={styles.welcomeText}>Welcome to My Bank</Text>
+      {/* Welcome Text */}
+      <Text style={styles.welcomeText}>Welcome to FedMobile</Text>
+
+      {/* Login Using MPIN Section */}
+      <Text style={styles.loginText}>Login Using MPIN</Text>
+
+      {/* MPIN Input Circles */}
+      <View style={styles.mpinContainer}>
+        {[...Array(4)].map((_, index) => (
+          <View key={index} style={styles.mpinCircle} />
+        ))}
       </View>
-      {/* Center section for MPIN login */}
-      <View style={styles.centerSection}>
-        <Text style={styles.loginText}>Login using Mpin</Text>
-        <TouchableOpacity style={styles.dotsContainer} onPress={handleDotPress}>
-          {Array.from({ length: 4 }).map((_, index) => (
-            <View key={index} style={styles.dot}>
-              {/* Show a filled dot if a digit has been entered */}
-              {mpin.length > index && <View style={styles.filledDot} />}
-            </View>
-          ))}
-        </TouchableOpacity>
-        {/* Hidden TextInput to trigger numeric keyboard */}
-        <TextInput
-          ref={inputRef}
-          style={styles.hiddenInput}
-          keyboardType="numeric"
-          maxLength={4}
-          value={mpin}
-          onChangeText={handleChange}
-          onSubmitEditing={Keyboard.dismiss}
-        />
-      </View>
+
+      {/* Forgot MPIN Link */}
+      <TouchableOpacity>
+        <Text style={styles.forgotText}>Forgot MPIN?</Text>
+      </TouchableOpacity>
+
+      {/* Scan & Pay Button (without the scan icon) */}
+      <TouchableOpacity style={styles.scanButton}>
+        <Text style={styles.scanText}>SCAN & PAY</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
+// Define styles using StyleSheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ADD8E6", // light blue background
-    paddingTop: 50,
-  },
-  topSection: {
+    backgroundColor: "#0052A5", // Blue background color
     alignItems: "center",
-    marginBottom: 50,
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
+    justifyContent: "center",
+    padding: 20,
   },
   welcomeText: {
-    marginTop: 10,
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "bold",
-    color: "#fff",
-  },
-  centerSection: {
-    flex: 1,
-    alignItems: "center",
+    color: "#FFFFFF",
+    marginBottom: 40,
   },
   loginText: {
     fontSize: 18,
-    color: "#fff",
+    color: "#FFFFFF",
     marginBottom: 20,
   },
-  dotsContainer: {
+  mpinContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "40%",
+    width: 200,
     marginBottom: 20,
   },
-  dot: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: "#fff",
+  mpinCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "#FFFFFF",
+  },
+  forgotText: {
+    fontSize: 16,
+    color: "#FFFFFF",
+    textDecorationLine: "underline",
+    marginBottom: 40,
+  },
+  scanButton: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#FFFFFF",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 25,
   },
-  filledDot: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: "#000",
-  },
-  hiddenInput: {
-    height: 0,
-    width: 0,
-    opacity: 0,
+  scanText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#0052A5",
   },
 });
 

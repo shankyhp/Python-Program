@@ -33,12 +33,14 @@ const App = () => {
   if (showWelcome) {
     return (
       <View style={styles.welcomeContainer}>
+        {/* Move Logo Upwards */}
         <Image
           source={require("../../assets/bank-logo.png")}
           style={styles.splashLogo}
         />
 
-        <Text style={styles.welcomeText}>Welcome to My Bank</Text>
+        {/* Move Text Upwards */}
+        <Text style={styles.welcomeText}>YOUR PERFECT BANKING PARTNER</Text>
       </View>
     );
   }
@@ -58,28 +60,24 @@ const styles = StyleSheet.create({
     height: 150,
     resizeMode: "contain",
   },
-  splashLogo: {
-    width: 250,
-    height: 250,
-    resizeMode: "contain",
-  },
   welcomeContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "lightblue",
   },
-  welcomeLogo: {
-    marginTop: -80,
-    width: 200,
-    height: 200,
+  splashLogo: {
+    width: 250,
+    height: 250,
     resizeMode: "contain",
+    marginTop: -50, // Moves logo upwards
   },
   welcomeText: {
-    marginTop: -80, // Move text up slightly
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold",
     color: "#000",
+    position: "absolute",
+    top: "52%",
   },
 });
 
