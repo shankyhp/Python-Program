@@ -1,44 +1,102 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  Keyboard,
+  ImageBackground,
+} from "react-native";
 
-// Define the type for the component (no props in this case)
 const LoginScreen: React.FC = () => {
-  return (
-    <View style={styles.container}>
-      {/* Welcome Text */}
-      <Text style={styles.welcomeText}>Welcome to FedMobile</Text>
+  const [mpin, setMpin] = useState<string>("");
+  const [isKeyboardVisible, setKeyboardVisible] = useState<boolean>(false);
 
-      {/* Login Using MPIN Section */}
+  const handleDotPress = () => {
+    setKeyboardVisible(true);
+    Keyboard.dismiss();
+    setTimeout(() => {
+      Keyboard.dismiss();
+    }, 100);
+  };
+
+  const handleMpinChange = (text: string) => {
+    if (text.length <= 4) {
+      setMpin(text);
+    }
+  };
+
+  return (
+    <ImageBackground
+      source={require("../../assets/hexagonal-pattern.png")} // Corrected Path
+      style={styles.container}
+      resizeMode="repeat"
+    >
+      <Image
+        source={require("../../assets/F-logo.jpg")} // Adjusted path for consistency
+        style={styles.logo}
+      />
+
+      <Text style={styles.welcomeText}>Welcome to FedMobile</Text>
       <Text style={styles.loginText}>Login Using MPIN</Text>
 
-      {/* MPIN Input Circles */}
-      <View style={styles.mpinContainer}>
+      <TouchableOpacity style={styles.mpinContainer} onPress={handleDotPress}>
         {[...Array(4)].map((_, index) => (
-          <View key={index} style={styles.mpinCircle} />
+          <View
+            key={index}
+            style={[
+              styles.mpinCircle,
+              mpin.length > index && styles.mpinCircleFilled,
+            ]}
+          />
         ))}
-      </View>
+      </TouchableOpacity>
 
-      {/* Forgot MPIN Link */}
+      <TextInput
+        style={styles.hiddenInput}
+        value={mpin}
+        onChangeText={handleMpinChange}
+        keyboardType="numeric"
+        maxLength={4}
+        secureTextEntry
+        autoFocus={isKeyboardVisible}
+        onFocus={() => setKeyboardVisible(true)}
+        onBlur={() => setKeyboardVisible(false)}
+      />
+
       <TouchableOpacity>
         <Text style={styles.forgotText}>Forgot MPIN?</Text>
       </TouchableOpacity>
 
-      {/* Scan & Pay Button (without the scan icon) */}
       <TouchableOpacity style={styles.scanButton}>
+        <Image
+          source={require("../../assets/scan.jpg")} // Adjusted path
+          style={styles.scanIcon}
+        />
         <Text style={styles.scanText}>SCAN & PAY</Text>
       </TouchableOpacity>
-    </View>
+
+      <View style={styles.bottomCurve} />
+    </ImageBackground>
   );
 };
 
-// Define styles using StyleSheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0052A5", // Blue background color
+    backgroundColor: "#0052A5",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    marginBottom: 120,
+    borderRadius: 30, // Make it round
+    overflow: "hidden", // Ensures the image remains within the border
   },
   welcomeText: {
     fontSize: 24,
@@ -63,6 +121,16 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 2,
     borderColor: "#FFFFFF",
+    backgroundColor: "transparent",
+  },
+  mpinCircleFilled: {
+    backgroundColor: "#FFFFFF",
+  },
+  hiddenInput: {
+    position: "absolute",
+    width: 0,
+    height: 0,
+    opacity: 0,
   },
   forgotText: {
     fontSize: 16,
@@ -78,10 +146,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 25,
   },
+  scanIcon: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
+  },
   scanText: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#0052A5",
+  },
+  bottomCurve: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    height: 100,
+    backgroundColor: "#FFFFFF",
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
   },
 });
 
