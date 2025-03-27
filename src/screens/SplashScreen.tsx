@@ -23,7 +23,7 @@ const App = () => {
     return (
       <View style={styles.splashContainer}>
         <Image
-          source={require("../../assets/F-logo.jpg")}
+          source={require("../../assets/F-logo.png")}
           style={styles.Flogo}
         />
       </View>
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   Flogo: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     resizeMode: "contain",
   },
   welcomeContainer: {
