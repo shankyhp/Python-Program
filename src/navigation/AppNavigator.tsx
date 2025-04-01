@@ -1,14 +1,16 @@
+// navigation/AppNavigator.tsx
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SplashScreen from "../screens/SplashScreen";
 import LoginScreen from "../screens/LoginScreen";
-import MainScreen from "../screens/MainScreen"; // Import MainScreen
+import MainScreen from "../screens/MainScreen";
 
+// Define the navigation stack types
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
-  Main: undefined; // Add MainScreen route
+  Main: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
