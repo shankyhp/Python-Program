@@ -61,7 +61,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={handleLogout}>
-            <Text style={styles.logoutText}>Logout</Text>
+          <Image
+                  source={require("../../assets/logout.jpg")}
+                  style={styles.logoutIcon}
+                />
           </TouchableOpacity>
         </View>
 
@@ -74,7 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
           <View style={styles.profileContent}>
             <View style={styles.profileIconContainer}>
               <Image
-                source={require("../../assets/profile-icon.jpg")}
+                source={require("../../assets/profile-icon-side.jpg")}
                 style={styles.profileIcon}
               />
             </View>
@@ -95,12 +98,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#4A90E2" },
+                  { backgroundColor: "#0099F7" },
                 ]}
               >
                 <Image
                   source={require("../../assets/app-settings-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon1}
                 />
               </View>
               <View>
@@ -115,12 +118,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#8E44AD" },
+                  { backgroundColor: "#722FE1" },
                 ]}
               >
                 <Image
                   source={require("../../assets/service-requests-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon2}
                 />
               </View>
               <View>
@@ -135,12 +138,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#1ABC9C" },
+                  { backgroundColor: "#12C9B7" },
                 ]}
               >
                 <Image
                   source={require("../../assets/cheque.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon3}
                 />
               </View>
               <View>
@@ -155,12 +158,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#9B59B6" },
+                  { backgroundColor: "#732EE1" },
                 ]}
               >
                 <Image
                   source={require("../../assets/help-support-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon4}
                 />
               </View>
               <View>
@@ -175,12 +178,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#F1C40F" },
+                  { backgroundColor: "#FDA416" },
                 ]}
               >
                 <Image
                   source={require("../../assets/app-language-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon5}
                 />
               </View>
               <View style={styles.menuItemWithExtra}>
@@ -198,12 +201,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#E67E22" },
+                  { backgroundColor: "#FC530E" },
                 ]}
               >
                 <Image
                   source={require("../../assets/locate-branch-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon6}
                 />
               </View>
               <View>
@@ -216,12 +219,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#3498DB" },
+                  { backgroundColor: "#0099F9" },
                 ]}
               >
                 <Image
                   source={require("../../assets/rate-us-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon7}
                 />
               </View>
               <View>
@@ -236,12 +239,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isVisible, onClose }) => {
               <View
                 style={[
                   styles.menuIconContainer,
-                  { backgroundColor: "#8E44AD" },
+                  { backgroundColor: "#702CE1" },
                 ]}
               >
                 <Image
                   source={require("../../assets/legal-about-icon.png")}
-                  style={styles.menuIcon}
+                  style={styles.menuIcon7}
                 />
               </View>
               <View>
@@ -312,14 +315,14 @@ const styles = StyleSheet.create({
   },
   profileIconContainer: {
     marginTop: 10,
-    backgroundColor: "#1ABC9C",
+    backgroundColor: "#17C9B3",
     borderRadius: 25,
     padding: 5,
     marginRight: 15,
   },
   profileIcon: {
-    width: 40,
-    height: 40,
+    width: 38,
+    height: 38,
     borderRadius: 20,
   },
   profileTextContainer: {
@@ -386,6 +389,44 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
   },
+  logoutIcon:{
+    marginTop: 10,
+    width: 80,
+    height: 20,
+  },
+  menuIcon1:{
+    width: 30,
+    height: 30,
+  },
+  menuIcon2:{
+    width: 30,
+    height: 30,
+  },
+  menuIcon3:{
+    width: 30,
+    height: 30,
+  },
+  menuIcon4:{
+    width: 30,
+    height: 30,
+  },
+  menuIcon5:{
+    width: 30,
+    height: 30,
+  },
+  menuIcon6:{
+    width: 30,
+    height: 30,
+  },
+  menuIcon7:{
+    width: 30,
+    height: 30,
+  }, 
+  menuIcon8:{
+    width: 30,
+    height: 30,
+  },
+ 
 });
 
 export default Sidebar;

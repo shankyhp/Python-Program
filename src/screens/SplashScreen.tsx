@@ -40,7 +40,7 @@ const App = () => {
         />
 
         {/* Move Text Upwards */}
-        <Text style={styles.welcomeText}>YOUR PERFECT BANKING PARTNER</Text>
+       
       </View>
     );
   }
@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
     backgroundColor: "lightblue",
   },
   splashLogo: {
-    width: 250,
-    height: 250,
+    width: 1000,
+    height: 1050,
     resizeMode: "contain",
-    marginTop: -50, // Moves logo upwards
+    marginTop: 20, // Moves logo upwards
   },
   welcomeText: {
     fontSize: 18,

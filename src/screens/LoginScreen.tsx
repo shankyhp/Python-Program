@@ -83,7 +83,12 @@ const LoginScreen: React.FC = () => {
           <Text style={styles.forgotText}>Forgot MPIN?</Text>
         </TouchableOpacity>
       </ImageBackground>
+      <Image
+          source={require("../../assets/login-bottom-logo.png")}
+          style={styles.loginbottomlogo}
+        />
     </View>
+    
   );
 };
 
@@ -119,6 +124,11 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     textDecorationLine: "underline",
     marginBottom: 40,
+  },
+  loginbottomlogo:{
+    width: 450,
+    height: 415,
+    resizeMode: "contain",
   },
 });
 

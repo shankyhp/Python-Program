@@ -33,7 +33,10 @@ const MainScreen: React.FC = () => {
             style={styles.profileIcon}
           />
         </TouchableOpacity>
-        <Text style={styles.headerText}>FEDERAL BANK</Text>
+        <Image
+              source={require("../../assets/fedbanklogo.jpg")}
+              style={styles.fedbanklogo}
+            />
         <View style={styles.headerIcons}>
           <TouchableOpacity>
             <Image
@@ -180,23 +183,23 @@ const MainScreen: React.FC = () => {
             <TouchableOpacity style={styles.sectionButton}>
               <Image
                 source={require("../../assets/broadband-icon.png")}
-                style={styles.sectionIcon}
+                style={[styles.sectionIcon]}
               />
-              <Text style={styles.sectionButtonText}>Broadband</Text>
+              <Text style={[styles.sectionButtonText]}>Broadband</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.sectionButton}>
               <Image
                 source={require("../../assets/send-to-mmid-icon.jpg")}
-                style={styles.sectionIcon}
+                style={[styles.sectionIcon, styles.commonStyle]}
               />
-              <Text style={styles.sectionButtonText}>Send to MMID</Text>
+              <Text style={[styles.sectionButtonText, styles.commonStyle]}>Send to MMID</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.sectionButton}>
               <Image
                 source={require("../../assets/flights-icon.png")}
-                style={styles.sectionIcon}
+                style={[styles.sectionIcon, styles.commonStyle]}
               />
-              <Text style={styles.sectionButtonText}>Flights</Text>
+              <Text style={[styles.sectionButtonText, styles.commonStyle]}>Flights</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -489,10 +492,10 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
   },
   headerIcon: {
-    width: 24,
-    height: 24,
+    width: 28,
+    height: 28,
     marginLeft: 15,
-    tintColor: "#0052A5", // Blue tint for icons
+   // Blue tint for icons
   },
   scrollView: {
     flex: 1,
@@ -560,8 +563,8 @@ const styles = StyleSheet.create({
     width: "22%", // Adjust width to fit 4 buttons evenly
   },
   optionIconContainer: {
-    width: 60, // Larger circle to match the image
-    height: 60,
+    width: 55, // Larger circle to match the image
+    height: 55,
     borderRadius: 30, // Make it circular
     backgroundColor: "#FFFFFF", // White background for the icon
     justifyContent: "center",
@@ -569,9 +572,8 @@ const styles = StyleSheet.create({
     marginBottom: 8, // Space between icon and text
   },
   optionIcon: {
-    width: 36, // Larger icon to match the image
-    height: 36,
-    tintColor: "#0052A5", // Blue tint for icons
+    width: 35, // Larger icon to match the image
+    height: 28    // Blue tint for icons
   },
   optionText: {
     fontSize: 12,
@@ -620,10 +622,13 @@ const styles = StyleSheet.create({
   sectionButton: {
     alignItems: "center",
     width: "22%", // Adjust width to fit 4 buttons
+    flexDirection: "column", // Ensure text and image are in a column
+    justifyContent: "center", // Center items vertically
   },
   sectionIcon: {
-    width: 30,
-    height: 30,
+    marginTop: 10,
+    width: 45,
+    height: 45,
     marginBottom: 5,
   },
   sectionButtonText: {
@@ -633,7 +638,7 @@ const styles = StyleSheet.create({
   },
   bharatConnectLogo: {
     width: 80,
-    height: 20,
+    height: 22,
   },
   bannerContainer: {
     marginHorizontal: 20,
@@ -671,13 +676,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   navIcon: {
-    width: 24,
-    height: 24,
-    marginBottom: 5,
-    tintColor: "#666666", // Gray for inactive icons
+    width: 43,
+    height: 29,
+    marginBottom: 5, // Gray for inactive icons
+    opacity: 1, // Ensure full opacity
   },
   navIconActive: {
     tintColor: "#0052A5", // Blue for active icon (Home)
+    opacity: 1, // Ensure full opacity
   },
   navText: {
     fontSize: 12,
@@ -708,6 +714,14 @@ const styles = StyleSheet.create({
     height: 16,
     marginHorizontal: 5,
     tintColor: "#FFFFFF", // White tint for Wi-Fi icon
+  },
+  commonStyle: {
+    // Remove marginRight and use flex properties instead
+  },
+  fedbanklogo: {
+    width: 80,
+    height: 20,
+    marginLeft: 5,
   },
 });
 
